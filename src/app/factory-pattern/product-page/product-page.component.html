@@ -1,0 +1,19 @@
+<h2>Select a Product Category</h2>
+
+<!-- Category Selection -->
+<div class="category-container">
+  <button *ngFor="let category of categories" (click)="loadProducts(category)">
+    {{ category | titlecase }}
+  </button>
+</div>
+
+<!-- Product List -->
+<div class="product-grid">
+  <div *ngFor="let product of products" class="product-card">
+    <h3>{{ product.title }}</h3>
+    <p class="price">Base Price: ${{ product.price }}</p>
+    <p class="final-price">
+      <strong>Final Price: ${{ product.calculateFinalPrice() }}</strong>
+    </p>
+  </div>
+</div>

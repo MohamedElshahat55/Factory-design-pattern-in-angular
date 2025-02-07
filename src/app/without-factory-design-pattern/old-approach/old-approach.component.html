@@ -1,0 +1,59 @@
+<div class="hint-container">
+  <span class="hint-icon">🚨</span>
+  <span class="hint-text">
+    Old Approach Using *ngIf (Without Factory Pattern)</span
+  >
+</div>
+
+<h2>Select a Product Category</h2>
+
+<!-- Category Selection -->
+<div class="category-container">
+  <button *ngFor="let category of categories" (click)="loadProducts(category)">
+    {{ category | titlecase }}
+  </button>
+</div>
+
+<!-- Product List -->
+<div class="product-grid">
+  <div *ngFor="let product of products" class="product-card">
+    <h3>{{ product.title }}</h3>
+    <p class="price">Base Price: ${{ product.price }}</p>
+
+    <!-- Multiple ngIf conditions for each product type -->
+    <p *ngIf="product.category === 'smartphones'" class="final-price">
+      <strong
+        >Final Price (Smartphone - 10% Tax): ${{
+          calculateFinalPrice(product)
+        }}</strong
+      >
+    </p>
+
+    <p *ngIf="product.category === 'laptops'" class="final-price">
+      <strong
+        >Final Price (Laptop - Discount if > $1000): ${{
+          calculateFinalPrice(product)
+        }}</strong
+      >
+    </p>
+
+    <p *ngIf="product.category === 'fragrances'" class="final-price">
+      <strong
+        >Final Price (Fragrance - Tax + Import Fee): ${{
+          calculateFinalPrice(product)
+        }}</strong
+      >
+    </p>
+
+    <p
+      *ngIf="
+        product.category !== 'smartphones' &&
+        product.category !== 'laptops' &&
+        product.category !== 'fragrances'
+      "
+      class="final-price"
+    >
+      <strong>Final Price: ${{ product.price }}</strong>
+    </p>
+  </div>
+</div>

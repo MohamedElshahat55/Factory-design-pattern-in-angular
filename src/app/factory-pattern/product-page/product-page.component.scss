@@ -1,0 +1,63 @@
+// General Styling
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+// Category Button Styles
+.category-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: #0056b3;
+    }
+  }
+}
+
+// Product Grid
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+// Product Card Styling
+.product-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 220px;
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .price {
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .final-price {
+    color: #d9534f;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+}
