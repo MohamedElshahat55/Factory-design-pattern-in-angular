@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../factory-pattern/models/product';
-import { ProductService } from '../../factory-pattern/services/product.service';
 import { CommonModule, TitleCasePipe } from '@angular/common';
+
+import { Product } from '../../shared';
+import { ProductService } from '../../factory-pattern/services/product.service';
 
 @Component({
   selector: 'app-old-approach',

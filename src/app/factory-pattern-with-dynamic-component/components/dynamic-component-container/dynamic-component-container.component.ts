@@ -1,20 +1,17 @@
-import { Component } from '@angular/core';
-import { DynamicComponentHostComponent } from '../dynamic-component-host/dynamic-component-host.component';
-import { FormsModule } from '@angular/forms';
-import { ComponentData } from '../../model/component-data.model';
+import { Component } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+
+import { ComponentData } from "../../model/component-data.model";
+import { DynamicComponentHostComponent } from "../dynamic-component-host/dynamic-component-host.component";
 
 @Component({
-  selector: 'app-dynamic-component-container',
+  selector: "app-dynamic-component-container",
   standalone: true,
   imports: [DynamicComponentHostComponent, FormsModule],
   template: `
     <h1>Dynamic Component Example</h1>
     <label for="componentType">Select Component Type:</label>
-    <select
-      id="componentType"
-      [(ngModel)]="selectedType"
-      (change)="onTypeChange()"
-    >
+    <select id="componentType" [(ngModel)]="selectedType" (change)="onTypeChange()">
       @for (type of ['chart', 'table', 'card']; track type) {
       <option [value]="type">{{ type }}</option>
       }
@@ -25,17 +22,18 @@ import { ComponentData } from '../../model/component-data.model';
   styles: ``,
 })
 export class DynamicComponentContainerComponent {
-  selectedType: string = 'chart'; // Default selection
+  selectedType: string = "chart"; // Default selection
+
   componentData: ComponentData = {
     type: this.selectedType,
-    data: 'Sample Data',
+    data: "Sample Data",
   };
 
   onTypeChange() {
     // Update the componentData when the selection changes
     this.componentData = {
       type: this.selectedType,
-      data: 'Sample Data',
+      data: "Sample Data",
     };
   }
 }
