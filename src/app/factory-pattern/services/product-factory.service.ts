@@ -1,39 +1,33 @@
-import { inject, Injectable } from '@angular/core';
-import { Product } from '../models/product';
-import { SmartphoneProduct } from '../models/smartphone-product';
-import { LaptopProduct } from '../models/laptop-product';
-import { FragranceProduct } from '../models/fragrance-product';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+import { Product } from '../../shared';
+import { LaptopProductService } from './laptop-product.service';
+import { FragranceProductService } from './fragrance-product.service';
+import { SmartphoneProductService } from './smartphone-product.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductFactoryService {
-  createProduct(data: any): Product {
+  constructor(
+    private laptopService: LaptopProductService,
+    private fragranceService: FragranceProductService,
+    private smartphoneService: SmartphoneProductService
+  ) {}
+
+  createProduct(data: Product): any {
     switch (data.category) {
       case 'smartphones':
-        return new SmartphoneProduct(
-          data.id,
-          data.title,
-          data.price,
-          data.category
-        );
+        data.finalPrice = this.smartphoneService.calculateFinalPrice(data.price);
+        return data;
       case 'laptops':
-        return new LaptopProduct(
-          data.id,
-          data.title,
-          data.price,
-          data.category
-        );
+        data.finalPrice = this.laptopService.calculateFinalPrice(data.price);
+        return data;
       case 'fragrances':
-        return new FragranceProduct(
-          data.id,
-          data.title,
-          data.price,
-          data.category
-        );
+        data.finalPrice = this.fragranceService.calculateFinalPrice(data.price);
+        return data;
       default:
-        throw new Error('Unknown product category');
+        throw new Error(`Unknown product category: ${data.category}`);
     }
   }
 }

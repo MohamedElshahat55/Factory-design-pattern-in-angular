@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { Product } from '../models/product';
 import { CommonModule, TitleCasePipe } from '@angular/common';
+
+import { Product } from '../../shared';
 import { ProductService } from '../services/product.service';
 
 @Component({

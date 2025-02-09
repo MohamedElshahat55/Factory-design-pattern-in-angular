@@ -1,7 +1,3 @@
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  calculateFinalPrice(): number;
+export interface ProductPriceCalculation {
+  calculateFinalPrice(price: number): number;
 }
